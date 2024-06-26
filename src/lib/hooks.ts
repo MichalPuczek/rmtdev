@@ -151,9 +151,9 @@ export function useDebounce<T>(value: T, delay = 500): T {
 export function useLocalStorage<T>(
   key: string,
   initialValue: T
-): [T, React.Dispatch<React.SetStateAction<T>>] {
+): readonly [T, React.Dispatch<React.SetStateAction<T>>] {
   // STATE : bookmarked job items
-  const [value, setValue] = useState<T>(
+  const [value, setValue] = useState(
     // Get data from local storage
     () => JSON.parse(localStorage.getItem(key) || JSON.stringify(initialValue))
   );
