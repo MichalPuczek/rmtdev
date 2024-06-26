@@ -1,3 +1,12 @@
+import { useJobItemsContext } from "../lib/hooks";
+
 export default function ResultsCount() {
-  return <p className="count">0 results</p>;
+  const { totalNrOfResults } = useJobItemsContext();
+
+  return (
+    <p className="count">
+      <span className="u-bold">{totalNrOfResults} </span>
+      {`offre${totalNrOfResults > 1 ? "s" : ""}`}
+    </p>
+  );
 }

@@ -1,3 +1,3 @@
-export default function Container() {
-  return <div className="container"></div>;
+export default function Container({ children }: { children: React.ReactNode }) {
+  return <div className="container">{children}</div>;
 }

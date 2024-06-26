@@ -1,19 +1,26 @@
+import { TJobItem } from "../lib/types";
+// Components
 import BookmarkIcon from "./BookmarkIcon";
 
-export default function JobListItem() {
+type JobListItemProps = {
+  jobItem: TJobItem;
+  isActive: boolean;
+};
+
+export default function JobListItem({ jobItem, isActive }: JobListItemProps) {
   return (
-    <li className="job-item">
-      <a className="job-item__link">
-        <div className="job-item__badge">9T</div>
+    <li className={`job-item ${isActive ? "job-item--active" : ""}`}>
+      <a href={`#${jobItem.id}`} className="job-item__link">
+        <div className="job-item__badge">{jobItem.badgeLetters}</div>
 
         <div className="job-item__middle">
-          <h3 className="third-heading">Front End React Engineer</h3>
-          <p className="job-item__company">9th Tech</p>
+          <h3 className="third-heading">{jobItem.title}</h3>
+          <p className="job-item__company">{jobItem.company}</p>
         </div>
 
         <div className="job-item__right">
-          <BookmarkIcon />
-          <time className="job-item__time">2d</time>
+          <BookmarkIcon id={jobItem.id} />
+          <time className="job-item__time">{jobItem.daysAgo}d</time>
         </div>
       </a>
     </li>
