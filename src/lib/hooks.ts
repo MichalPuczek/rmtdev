@@ -153,7 +153,7 @@ export function useLocalStorage<T>(
   initialValue: T
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
   // STATE : bookmarked job items
-  const [value, setValue] = useState(
+  const [value, setValue] = useState<T>(
     // Get data from local storage
     () => JSON.parse(localStorage.getItem(key) || JSON.stringify(initialValue))
   );
